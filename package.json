@@ -10,7 +10,7 @@
     "/dist"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "@konscheel:registry": "https://npm.pkg.github.com"
   },
   "repository": "https://github.com/konscheel/audomail",
   "prepublish": "tsc",
