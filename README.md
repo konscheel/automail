@@ -1,9 +1,9 @@
-# audomail
+# automail
 
 ## _Library für JavaScript-Frameworks zur Domain-Vervollständigung_
 ***
 
-_automail_ ist eine Library zur Einbindung von E-Mail-Domain-Vorschlägen für beliebige JavaScript- oder Typescript-Frameworks.
+_automail_ ist eine Library zur Einbindung von E-Mail-Domain-Vorschlägen für beliebige JavaScript-Frameworks.
 
 ## Features
 
@@ -15,7 +15,7 @@ _automail_ ist eine Library zur Einbindung von E-Mail-Domain-Vorschlägen für b
 
 Ein Vorteil von _automail_ ist seine geringe Abhängigkeit von anderen Dependencies:
 
-- [node.js] - evented I/O fürs Backend
+- [js-levenshtein] - zur Berücksichtigung von eventuellen Tippfehlern des Nutzers bei seiner E-Mail-Eingabe
 
 _automail_ selbst ist quelloffen mit einem [öffentlichen Repository][automail] auf GitHub.
 
@@ -30,8 +30,13 @@ npm install --save-dev automail
 
 ### generelle Verwendung
 
+Es wird vorausgesetzt, dass das Array nach Häufigkeit und absteigend sortiert vorliegt.
+
 ```
-frameworkunabhängige Funktionsweise darstellen
+let bekannteDomains = [//Domains]
+let input = eineImplementierungUmInputAuszulesen()
+
+let suggestions = domainSuggestion(input, {bekannteDomains}) //optional auch die max. Anzahl an Vorschlägen: {bekannteDomains, 10}
 ```
 
 ### am Beispiel von _React Native_
@@ -46,19 +51,9 @@ sehr gutes Beispiel
 noch ein sehr gutes Beispiel
 ```
 
-## Development
-
-Du möchtest mitmachen? Super!
-
-## Support
-
-
-
 ## License
 
 MIT
 
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
-[automail]: <https://github.com/>
-[node.js]: <http://nodejs.org>
+[automail]: <https://github.com/konscheel/automail>
+[js-levenshtein]: <https://github.com/gustf/js-levenshtein>
