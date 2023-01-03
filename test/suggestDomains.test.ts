@@ -1,4 +1,4 @@
-import {suggestDomains} from "../src";
+import {suggestDomains} from "../dist";
 
 const knownDomains = ['web.de', 'gmx.de', 'gmx.net', 'mein.gmx', 'gmx.at', 'gmx.ch', 'gmail.com', 'googlemail.com',
     'outlook.com', 'outlook.de', 't-online.de', 'freenet.de', 'yahoo.com', 'yahoo.fr', 'yahoo.co.uk', 'yahoo.com.br',
