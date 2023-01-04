@@ -48,7 +48,6 @@ function validateInput(userInput: string) {
     const indexAfterAT = userInput.indexOf('@') + 1
     if (indexAfterAT > 0) {
         const domainInput = userInput.slice(indexAfterAT)
-        //return !/\w+\.\w+\.?\w+/.test(domainInput) ? domainInput : false
         return /^(\w+\.\w+\.?\w+|(?=\W).*)$/.test(domainInput) ? false : domainInput
     }
 }
