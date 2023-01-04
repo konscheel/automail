@@ -3,10 +3,16 @@ import {suggestDomains} from "../dist";
 const knownDomains = ['web.de', 'gmx.de', 'gmx.net', 'mein.gmx', 'gmx.at', 'gmx.ch', 'gmail.com', 'googlemail.com',
     'outlook.com', 'outlook.de', 't-online.de', 'freenet.de', 'yahoo.com', 'yahoo.fr', 'yahoo.co.uk', 'yahoo.com.br',
     'yahoo.co.in', 'yahoo.es', 'yahoo.it', 'yahoo.de', 'yahoo.in', 'yahoo.ca', 'yahoo.com.au', 'yahoo.co.jp',
-    'yahoo.com.ar', 'yahoo.com.mx', 'yahoo.co.id', 'yahoo.com.sg', 'aol.com']
+    'yahoo.com.ar', 'yahoo.com.mx', 'yahoo.co.id', 'yahoo.com.sg', 'aol.com', '163.com']
 
-it('should start making suggestions when a character was typed after the @-symbol',  () => {
+it('should start making suggestions when a character was typed after the @-symbol', () => {
     let input = 'username@g'
+    let suggestions = suggestDomains(input, {domains: knownDomains})
+    expect(suggestions).not.toHaveLength(0)
+});
+
+it('should start making suggestions when a number was typed after the @-symbol', () => {
+    let input = 'username@1'
     let suggestions = suggestDomains(input, {domains: knownDomains})
     expect(suggestions).not.toHaveLength(0)
 });
@@ -17,19 +23,24 @@ it('should not start making suggestions until a character was typed after the @-
     expect(suggestions).toHaveLength(0)
 });
 
+it('should not start making suggestions if the input can not result in a valid email address', () => {
+    let input = 'username@@'
+    expect(() => suggestDomains(input, {domains: knownDomains})).not.toThrow(TypeError)
+});
+
 it('should not crash if there is no @-symbol typed yet', () => {
     let input = 'username'
     let suggestions = suggestDomains(input, {domains: knownDomains})
     expect(suggestions).toHaveLength(0)
 });
 
-it('should limit the shown suggestions by 5 as standard',  () => {
+it('should limit the shown suggestions by 5 as standard', () => {
     let input = 'username@yahoo'
     let suggestions = suggestDomains(input, {domains: knownDomains})
     expect(suggestions).toHaveLength(5)
 });
 
-it('should limit the shown suggestions by the value passed as maxSuggestions',  () => {
+it('should limit the shown suggestions by the value passed as maxSuggestions', () => {
     let input = 'username@yahoo'
     let suggestions = suggestDomains(input, {domains: knownDomains, maxSuggestions: 10})
     expect(suggestions).toHaveLength(10)
