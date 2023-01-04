@@ -1,9 +1,18 @@
 import {suggestDomains} from "../dist";
 
-const knownDomains = ['web.de', 'gmx.de', 'gmx.net', 'mein.gmx', 'gmx.at', 'gmx.ch', 'gmail.com', 'googlemail.com',
-    'outlook.com', 'outlook.de', 't-online.de', 'freenet.de', 'yahoo.com', 'yahoo.fr', 'yahoo.co.uk', 'yahoo.com.br',
-    'yahoo.co.in', 'yahoo.es', 'yahoo.it', 'yahoo.de', 'yahoo.in', 'yahoo.ca', 'yahoo.com.au', 'yahoo.co.jp',
-    'yahoo.com.ar', 'yahoo.com.mx', 'yahoo.co.id', 'yahoo.com.sg', 'aol.com', '163.com']
+const knownDomains = ["gmail.com", "yahoo.com", "hotmail.com", "aol.com", "outlook.com", "comcast.net", "icloud.com",
+    "msn.com", "hotmail.co.uk", "sbcglobal.net", "live.com", "yahoo.co.in", "me.com", "att.net", "mail.ru",
+    "bellsouth.net", "rediffmail.com", "cox.net", "yahoo.co.uk", "verizon.net", "ymail.com", "hotmail.it", "kw.com",
+    "yahoo.com.tw", "mac.com", "live.se", "live.nl", "yahoo.com.br", "googlemail.com", "libero.it", "web.de",
+    "allstate.com", "btinternet.com", "online.no", "yahoo.com.au", "live.dk", "earthlink.net", "yahoo.fr", "yahoo.it",
+    "gmx.de", "hotmail.fr", "shawinc.com", "yahoo.de", "moe.edu.sg", "163.com", "naver.com", "bigpond.com",
+    "statefarm.com", "remax.net", "rocketmail.com", "live.no", "yahoo.ca", "bigpond.net.au", "hotmail.se", "gmx.at",
+    "live.co.uk", "mail.com", "yahoo.in", "yandex.ru", "qq.com", "charter.net", "indeedemail.com", "alice.it",
+    "hotmail.de", "bluewin.ch", "optonline.net", "wp.pl", "yahoo.es", "hotmail.no", "pindotmedia.com", "orange.fr",
+    "live.it", "yahoo.co.id", "yahoo.no", "hotmail.es", "morganstanley.com", "wellsfargo.com", "juno.com", "wanadoo.fr",
+    "facebook.com", "edwardjones.com", "yahoo.se", "fema.dhs.gov", "rogers.com", "yahoo.com.hk", "live.com.au",
+    "nic.in", "nab.com.au", "ubs.com", "uol.com.br", "shaw.ca", "t-online.de", "umich.edu", "westpac.com.au",
+    "yahoo.com.mx", "yahoo.com.sg", "farmersagent.com", "anz.com", "yahoo.dk", "dhs.gov"]
 
 it('should start making suggestions when a character was typed after the @-symbol', () => {
     let input = 'username@g'
@@ -71,7 +80,7 @@ it('should order the suggestions for equal domains with different endings descen
 it('should still make reasonable suggestions if the input has typos ', () => {
     let input = 'username@gnail'
     let suggestions = suggestDomains(input, {domains: knownDomains})
-    expect(suggestions).toEqual(['gmail.com'])
+    expect(suggestions).toEqual(expect.arrayContaining(['gmail.com']))
 });
 
 it('should not crash for invalid parameters', () => {

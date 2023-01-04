@@ -52,4 +52,4 @@ function validateInput(userInput: string) {
     }
 }
 
-export {suggestDomains, Options}
+export {suggestDomains}
