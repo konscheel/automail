@@ -30,6 +30,9 @@
     "build": "tsc"
   },
   "release": {
-    "branches": ["master"]
+    "branches": ["master"],
+    "plugins": [
+      "@semantic-release/npm"
+    ]
   }
 }
