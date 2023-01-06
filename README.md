@@ -36,12 +36,59 @@ let suggestions = domainSuggestion(input, {knownDomains}) //optional max. count 
 
 ### _React Native_ Example
 ```
-sehr gutes Beispiel
-```
+import React, {useState} from 'react'
+import {StyleSheet, View, TextInput} from 'react-native'
+import {Picker} from "@react-native-picker/picker"
+import {suggestDomains} from "@konscheel/automail/dist"
 
-### _XY_ Example
-```
-noch ein sehr gutes Beispiel
+export default function SuggestionDropdown() {
+    const domains = ["gmail.com", "yahoo.com", "hotmail.com", "aol.com", "outlook.com", "comcast.net", "icloud.com"]    
+    const [input, setInput] = useState('')
+    const [suggestions, setSuggestions] = useState([''])
+
+    const handleInputChange = (text) => {
+        setInput(text)
+        const newSuggestions = suggestDomains(text, {domains})
+        newSuggestions.unshift('')
+        setSuggestions(newSuggestions)
+    }
+
+    return (
+        <View>
+            <TextInput
+                value={input}
+                onChangeText={handleInputChange}
+                style={styles.textInput}
+            />
+            {suggestions.length > 1 &&
+                <Picker
+                    style={styles.picker}
+                    selectedValue={''}
+                    onValueChange={(value) => {
+                        handleInputChange(input.slice(0, input.indexOf('@') + 1) + value)
+                    }}>
+                    {suggestions.map((suggestion) => (
+                        <Picker.Item key={suggestion} label={suggestion} value={suggestion}/>))}
+                </Picker>
+            }
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    textInput: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+    },
+    picker: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+    }
+})
 ```
 
 ## License
