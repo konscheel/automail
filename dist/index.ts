@@ -35,7 +35,7 @@ function suggestDomains(userInput: string, {domains, maxSuggestions}: Options) {
             return suggestions
         } else return []
     } catch (error) {
-        console.error(error + "\n_______________________________" + "\nUser input: " + userInput + "\nKnown domains: " + domains, "\nMax suggestions: " + maxSuggestions)
+        console.error(error + "\nUser input: " + userInput + "\nKnown domains: " + domains, "\nMax suggestions: " + maxSuggestions)
         return []
     }
 }
