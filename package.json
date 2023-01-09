@@ -32,6 +32,8 @@
   "release": {
     "branches": ["master"],
     "plugins": [
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/prepare",
       "@semantic-release/github"
     ]
   }
