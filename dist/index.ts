@@ -5,7 +5,7 @@ type Options = {
     maxSuggestions?: number,
 }
 
-function suggestDomains(userInput: string, {domains, maxSuggestions}: Options) {
+export function suggestDomains(userInput: string, {domains, maxSuggestions}: Options) {
     try {
         const domainInput = validateInput(userInput)
         if (domainInput) {
@@ -40,6 +40,10 @@ function suggestDomains(userInput: string, {domains, maxSuggestions}: Options) {
     }
 }
 
+export function suggestFullEmails(userInput: string, {domains, maxSuggestions}: Options) {
+    return suggestDomains(userInput, {domains, maxSuggestions}).map(domain => userInput.slice(0, userInput.indexOf('@')+1) + domain)
+}
+
 function validateInput(userInput: string) {
     if (typeof userInput !== 'string') {
         throw Error("User input should be of type string.")
@@ -51,5 +55,3 @@ function validateInput(userInput: string) {
         return /^(\w+\.\w+\.?\w+|(?=\W).*)$/.test(domainInput) ? false : domainInput
     }
 }
-
-export {suggestDomains}
