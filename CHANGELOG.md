@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/konscheel/automail/compare/v1.0.0...v1.1.0) (2023-01-17)
+
+
+### Features
+
+* **automail:** suggest full emails to spare users the necessity of writing their own solutions ([dd294d4](https://github.com/konscheel/automail/commit/dd294d474a3585f531181c0fc1b35395e68c67de))
+
 # 1.0.0 (2023-01-11)
 
 

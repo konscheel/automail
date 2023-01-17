@@ -1,6 +1,6 @@
 {
   "name": "@konscheel/automail",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Show reasonable suggestions for e-mail domains",
   "author": "Konstanze Scheel",
   "license": "MIT",
