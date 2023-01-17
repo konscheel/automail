@@ -9,6 +9,7 @@
   "files": [
     "/dist"
   ],
+  "lib": "dist",
   "publishConfig": {
     "@konscheel:registry": "https://npm.pkg.github.com"
   },
